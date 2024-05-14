@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class Rock_Tac {
+public class Rock_Tic {
     public static void setBoard() {
 
         for (int i = 0; i < 9; i++) {
