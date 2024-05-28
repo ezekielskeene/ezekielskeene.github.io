@@ -1,5 +1,7 @@
 # Rock Paper Scissors Tic Tac Toe
 Rock paper scissors combined with tic tac toe.
-yay
+yay.
 There's probably some glitches. I haven't tested much.
-more yay
+more yay.
+Also its better now.
+even more yay.

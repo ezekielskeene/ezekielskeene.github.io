@@ -173,7 +173,6 @@ public class Rock_Tic {
             scissorsSpaces.set(space, -1);
         }
 
-        
         amount.set(space, setAmount);
     }
 
@@ -280,8 +279,7 @@ public class Rock_Tic {
             useful.print("     / |       |       ");
             useful.print("   " +  spaces.get(6) + "   |   " + spaces.get(7) + "   |   " + spaces.get(8) + "   ");
             useful.print(" /    " + amount.get(6) + "|      " + amount.get(7) + "|      " + amount.get(8));
-        }
-        
+        }   
     }
 
     public static boolean checkWin(String player) {

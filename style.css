@@ -1,0 +1,113 @@
+
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+
+form {
+  color: #20d54d
+}
+
+h1 {
+  color: #23b24d
+}
+
+a {
+  border: 1px solid #23b24d;
+  text-decoration: none;
+  color: black;
+  padding: 1px;
+  background-color: #20d54d;
+}
+
+a:hover {
+  background-color: white;
+}
+
+.blankSquare {
+  width: 110px;
+  height: 110px;
+  padding: 0px;
+  border: 1px black;
+  margin: 0;
+}
+.square { 
+  width: 110px;
+  height: 110px;
+  padding: 5px;
+  border: 2px black solid ;
+  margin: 0;
+}
+.moveNumber {
+  display: inline-block;
+  position:relative;
+  right:15px;
+  bottom: 5px;
+  width: 0;
+  height:0;
+  margin: 0;
+}
+
+.winSquare {
+  width: 110px;
+  height: 110px;
+  padding: 5px;
+  border: 2px black solid ;
+  margin: 0;
+  
+}
+
+.horizontal {
+  height: 2px;
+  background-color: red;
+  width: 345px;
+  position: relative;
+  top: 58px;
+  left: 657px;
+  visibility:hidden;
+}
+.vertical {
+  height: 2px;
+  background-color: red;
+  position: relative;
+  width: 343px;
+  visibility: hidden;
+  transform: rotate(90deg);
+}
+#vertical1 { 
+  top:173px;
+  left: 540px;
+}
+#vertical2 {
+  top:55px;
+  left: 658px;
+}
+#vertical3 {
+  bottom: 63px;
+  left: 776px
+}
+
+.diagonal {
+  height: 2px;
+  background-color: red;
+  position: relative;
+  visibility: hidden;
+  width: 486px;
+}
+
+#diagonal1 {
+  transform: rotate(45deg);
+  top: 177px;
+  left: 588px;
+}
+#diagonal2 {
+  transform: rotate(315deg);
+  top: 175px;
+  left: 586px
+}
+
+button {
+  visibility: hidden;
+}
