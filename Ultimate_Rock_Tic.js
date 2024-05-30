@@ -366,27 +366,7 @@ function updateSquare (i, j) {
     }
     squares[i][j].classList.replace('blankSquareU', 'squareU');
     checkForSquareWin(i)
-    if (fullSquares[j] && !checkForWin()) {
-        for (let I = 0; I < 9; I++) {
-            if (!fullSquares[I]) {
-                bigSquares[I].classList.replace('notActive', 'active')
-            } else {
-                bigSquares[I].classList.replace('active', 'notActive')
-            }
-        }
-    } else if (!checkForWin()) {
-        for (let I = 0; I < 9; I++) {
-            if (I === j) {
-                bigSquares[I].classList.replace('notActive', 'active')
-            } else {               
-                bigSquares[I].classList.replace('active', 'notActive')
-            }
-        }
-    } else {
-        for (let I = 0; I < 9; I++) {           
-            bigSquares[I].classList.replace('active', 'notActive')
-        }
-    }
+    setSquareToActive(j)
     document.getElementById('validU').textContent = ""
     activeSquare = j
     turnIncrement(i);
@@ -462,5 +442,35 @@ function updateWinSquares(i) {
         bigSquareValues[i] = 'S'
         scissorsWinSquares1[i].style.visibility = 'visible'
         scissorsWinSquares2[i].style.visibility = 'visible'
+    }
+}
+
+const activeCovers = [document.getElementById('activeCover1'), document.getElementById('activeCover2'), document.getElementById('activeCover3'), document.getElementById('activeCover4'), document.getElementById('activeCover5'), document.getElementById('activeCover6'), document.getElementById('activeCover7'), document.getElementById('activeCover8'), document.getElementById('activeCover9'), ]
+function setSquareToActive(i) {
+    if (fullSquares[i] && !checkForWin()) {
+        for (let I = 0; I < 9; I++) {
+            if (!fullSquares[I]) {
+                bigSquares[I].classList.replace('notActive', 'active')
+                activeCovers[I].style.visibility = 'visible'
+            } else {
+                bigSquares[I].classList.replace('active', 'notActive')
+                activeCovers[I].style.visibility = 'hidden'
+            }
+        }
+    } else if (!checkForWin()) {
+        for (let I = 0; I < 9; I++) {
+            if (I === i) {
+                bigSquares[I].classList.replace('notActive', 'active')
+                activeCovers[I].style.visibility = 'visible'
+            } else {               
+                bigSquares[I].classList.replace('active', 'notActive')
+                activeCovers[I].style.visibility = 'hidden'
+            }
+        }
+    } else {
+        for (let I = 0; I < 9; I++) {           
+            bigSquares[I].classList.replace('active', 'notActive')
+            activeCovers[I].style.visibility = 'hidden'
+        }
     }
 }

@@ -18,6 +18,7 @@
         <circle cx="115" cy="570" r="100" stroke="red" stroke-width="4" fill="transparent" id="rock7" class="rocksvg"/>
         <circle cx="355" cy="570" r="100" stroke="red" stroke-width="4" fill="transparent" id="rock8" class="rocksvg"/>
         <circle cx="595" cy="570" r="100" stroke="red" stroke-width="4" fill="transparent" id="rock9" class="rocksvg"/>
+
         <rect x="30" y="27" width="170" height="170" stroke="red" stroke-width="4" fill="transparent" id="paper1" class="papersvg"/>
         <rect x="270" y="27" width="170" height="170" stroke="red" stroke-width="4" fill="transparent" id="paper2" class="papersvg"/>
         <rect x="510" y="27" width="170" height="170" stroke="red" stroke-width="4" fill="transparent" id="paper3" class="papersvg"/>
@@ -27,6 +28,7 @@
         <rect x="30" y="487" width="170" height="170" stroke="red" stroke-width="4" fill="transparent" id="paper7" class="papersvg"/>
         <rect x="270" y="487" width="170" height="170" stroke="red" stroke-width="4" fill="transparent" id="paper8" class="papersvg"/>
         <rect x="510" y="487" width="170" height="170" stroke="red" stroke-width="4" fill="transparent" id="paper9" class="papersvg"/>
+
         <line x1="30" y1="30" x2="200" y2="200" stroke="red" stroke-width="4" id="scissors1-1"/>
         <line x1="30" y1="200" x2="200" y2="30" stroke="red" stroke-width="4" id="scissors2-1"/>
         <line x1="270" y1="30" x2="440" y2="200" stroke="red" stroke-width="4" id="scissors1-2"/>
@@ -45,6 +47,7 @@
         <line x1="270" y1="660" x2="440" y2="490" stroke="red" stroke-width="4" id="scissors2-8"/>
         <line x1="510" y1="490" x2="680" y2="660" stroke="red" stroke-width="4" id="scissors1-9"/>
         <line x1="510" y1="660" x2="680" y2="490" stroke="red" stroke-width="4" id="scissors2-9"/>
+
         <line x1="30", y1="30", x2="680", y2="660"  stroke="blue" stroke-width="5" id="diagonalU1" class="winLineU"/>
         <line x1="680", y1="30", x2="30", y2="660"  stroke="blue" stroke-width="5" id="diagonalU2" class="winLineU"/>
         <line x1="30", y1="110", x2="680", y2="110"  stroke="blue" stroke-width="5" id="horizontalU1" class="winLineU"/>
@@ -54,18 +57,30 @@
         <line x1="355", y1="30", x2="355", y2="660"  stroke="blue" stroke-width="5" id="verticalU2" class="winLineU"/>
         <line x1="595", y1="30", x2="595", y2="660"  stroke="blue" stroke-width="5" id="verticalU3" class="winLineU"/>
 
+        <line x1="236", y1="3", x2="236", y2="677"  stroke="black" stroke-width="12" id="bigLine1" class="bigLine"/>
+        <line x1="476", y1="3", x2="476", y2="677"  stroke="black" stroke-width="12" id="bigLine2" class="bigLine"/>
+        <line x1="3", y1="226", x2="708", y2="226"  stroke="black" stroke-width="8" id="bigLine3" class="bigLine"/>
+        <line x1="3", y1="454", x2="708", y2="454"  stroke="black" stroke-width="8" id="bigLine4" class="bigLine"/>
+        <!--
+        <line x1="77", y1="3", x2="77", y2="222"  stroke="black" stroke-width="5" id="smallLine1-1" class="smallLine1 smallLine"/>
+        <line x1="155", y1="3", x2="155", y2="222"  stroke="black" stroke-width="5" id="smallLine1-2" class="smallLine1 smallLine"/>
+        <line x1="3", y1="75", x2="230", y2="75"  stroke="black" stroke-width="2.5" id="smallLine1-3" class="smallLine1 smallLine"/>
+        <line x1="3", y1="149", x2="230", y2="149"  stroke="black" stroke-width="2.5" id="smallLine1-4" class="smallLine1 smallLine"/>
+        -->
+        <rect x="0" y="0" width="230" height="220" stroke="rgb(0, 255, 102)" stroke-width="4" fill="transparent" id="activeCover1" class="activeCover"/>
+        <rect x="241" y="0" width="230" height="220" stroke="rgb(0, 255, 102)" stroke-width="4" fill="transparent" id="activeCover2" class="activeCover"/>
+        <rect x="482" y="0" width="230" height="220" stroke="rgb(0, 255, 102)" stroke-width="4" fill="transparent" id="activeCover3" class="activeCover"/>
+        <rect x="0" y="230" width="230" height="220" stroke="rgb(0, 255, 102)" stroke-width="4" fill="transparent" id="activeCover4" class="activeCover"/>
+        <rect x="241" y="230" width="230" height="220" stroke="rgb(0, 255, 102)" stroke-width="4" fill="transparent" id="activeCover5" class="activeCover"/>
+        <rect x="482" y="230" width="230" height="220" stroke="rgb(0, 255, 102)" stroke-width="4" fill="transparent" id="activeCover6" class="activeCover"/>
+        <rect x="0" y="460" width="230" height="220" stroke="rgb(0, 255, 102)" stroke-width="4" fill="transparent" id="activeCover7" class="activeCover"/>
+        <rect x="241" y="460" width="230" height="220" stroke="rgb(0, 255, 102)" stroke-width="4" fill="transparent" id="activeCover8" class="activeCover"/>
+        <rect x="482" y="460" width="230" height="220" stroke="rgb(0, 255, 102)" stroke-width="4" fill="transparent" id="activeCover9" class="activeCover"/>
+
+
     </svg>
     <div id="bigSquare1" class="bigSquare notActive">
-        <!--
-        <div id="horizontal1" class="horizontal"></div>
-        <div id="vertical1" class="vertical"></div>
-        <div id="diagonal1" class="diagonal"></div>
-        <div id="diagonal2" class="diagonal"></div>
-        <div id="horizontal2" class="horizontal"></div>
-        <div id="vertical2" class="vertical"></div>
-        <div id="horizontal3" class="horizontal"></div>
-        <div id="vertical3" class="vertical"></div>
-        -->
+        
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square1-1">
         <label for="square1-1" class="moveNumberU" id="moveNumber1-1">0</label>
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square1-2">
@@ -88,16 +103,7 @@
         <label for="square1-9" class="moveNumberU" id="moveNumber1-9">0</label>
     </div>
     <div id="bigSquare2" class="bigSquare notActive">
-        <!--
-        <div id="horizontal1" class="horizontal"></div>
-        <div id="vertical1" class="vertical"></div>
-        <div id="diagonal1" class="diagonal"></div>
-        <div id="diagonal2" class="diagonal"></div>
-        <div id="horizontal2" class="horizontal"></div>
-        <div id="vertical2" class="vertical"></div>
-        <div id="horizontal3" class="horizontal"></div>
-        <div id="vertical3" class="vertical"></div>
-        -->
+        
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square2-1">
         <label for="square2-1" class="moveNumberU" id="moveNumber2-1">0</label>
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square2-2">
@@ -120,16 +126,7 @@
         <label for="square2-9" class="moveNumberU" id="moveNumber2-9">0</label>
     </div>
     <div id="bigSquare3" class="bigSquare notActive">
-        <!--
-        <div id="horizontal1" class="horizontal"></div>
-        <div id="vertical1" class="vertical"></div>
-        <div id="diagonal1" class="diagonal"></div>
-        <div id="diagonal2" class="diagonal"></div>
-        <div id="horizontal2" class="horizontal"></div>
-        <div id="vertical2" class="vertical"></div>
-        <div id="horizontal3" class="horizontal"></div>
-        <div id="vertical3" class="vertical"></div>
-        -->
+        
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square3-1">
         <label for="square3-1" class="moveNumberU" id="moveNumber3-1">0</label>
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square3-2">
@@ -153,16 +150,7 @@
     </div>
     <br>
     <div id="bigSquare4" class="bigSquare notActive">
-        <!--
-        <div id="horizontal1" class="horizontal"></div>
-        <div id="vertical1" class="vertical"></div>
-        <div id="diagonal1" class="diagonal"></div>
-        <div id="diagonal2" class="diagonal"></div>
-        <div id="horizontal2" class="horizontal"></div>
-        <div id="vertical2" class="vertical"></div>
-        <div id="horizontal3" class="horizontal"></div>
-        <div id="vertical3" class="vertical"></div>
-        -->
+        
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square4-1">
         <label for="square4-1" class="moveNumberU" id="moveNumber4-1">0</label>
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square4-2">
@@ -185,16 +173,7 @@
         <label for="square4-9" class="moveNumberU" id="moveNumber4-9">0</label>
     </div>
     <div id="bigSquare5" class="bigSquare notActive">
-        <!--
-        <div id="horizontal1" class="horizontal"></div>
-        <div id="vertical1" class="vertical"></div>
-        <div id="diagonal1" class="diagonal"></div>
-        <div id="diagonal2" class="diagonal"></div>
-        <div id="horizontal2" class="horizontal"></div>
-        <div id="vertical2" class="vertical"></div>
-        <div id="horizontal3" class="horizontal"></div>
-        <div id="vertical3" class="vertical"></div>
-        -->
+        
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square5-1">
         <label for="square5-1" class="moveNumberU" id="moveNumber5-1">0</label>
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square5-2">
@@ -217,16 +196,7 @@
         <label for="square5-9" class="moveNumberU" id="moveNumber5-9">0</label>
     </div>
     <div id="bigSquare6" class="bigSquare notActive">
-        <!--
-        <div id="horizontal1" class="horizontal"></div>
-        <div id="vertical1" class="vertical"></div>
-        <div id="diagonal1" class="diagonal"></div>
-        <div id="diagonal2" class="diagonal"></div>
-        <div id="horizontal2" class="horizontal"></div>
-        <div id="vertical2" class="vertical"></div>
-        <div id="horizontal3" class="horizontal"></div>
-        <div id="vertical3" class="vertical"></div>
-        -->
+        
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square6-1">
         <label for="square6-1" class="moveNumberU" id="moveNumber6-1">0</label>
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square6-2">
@@ -250,16 +220,7 @@
     </div>
     <br>
     <div id="bigSquare7" class="bigSquare notActive">
-        <!--
-        <div id="horizontal1" class="horizontal"></div>
-        <div id="vertical1" class="vertical"></div>
-        <div id="diagonal1" class="diagonal"></div>
-        <div id="diagonal2" class="diagonal"></div>
-        <div id="horizontal2" class="horizontal"></div>
-        <div id="vertical2" class="vertical"></div>
-        <div id="horizontal3" class="horizontal"></div>
-        <div id="vertical3" class="vertical"></div>
-        -->
+        
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square7-1">
         <label for="square7-1" class="moveNumberU" id="moveNumber7-1">0</label>
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square7-2">
@@ -282,16 +243,7 @@
         <label for="square7-9" class="moveNumberU" id="moveNumber7-9">0</label>
     </div>
     <div id="bigSquare8" class="bigSquare notActive">
-        <!--
-        <div id="horizontal1" class="horizontal"></div>
-        <div id="vertical1" class="vertical"></div>
-        <div id="diagonal1" class="diagonal"></div>
-        <div id="diagonal2" class="diagonal"></div>
-        <div id="horizontal2" class="horizontal"></div>
-        <div id="vertical2" class="vertical"></div>
-        <div id="horizontal3" class="horizontal"></div>
-        <div id="vertical3" class="vertical"></div>
-        -->
+        
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square8-1">
         <label for="square8-1" class="moveNumberU" id="moveNumber8-1">0</label>
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square8-2">
@@ -314,16 +266,7 @@
         <label for="square8-9" class="moveNumberU" id="moveNumber8-9">0</label>
     </div>
     <div id="bigSquare9" class="bigSquare notActive">
-        <!--
-        <div id="horizontal1" class="horizontal"></div>
-        <div id="vertical1" class="vertical"></div>
-        <div id="diagonal1" class="diagonal"></div>
-        <div id="diagonal2" class="diagonal"></div>
-        <div id="horizontal2" class="horizontal"></div>
-        <div id="vertical2" class="vertical"></div>
-        <div id="horizontal3" class="horizontal"></div>
-        <div id="vertical3" class="vertical"></div>
-        -->
+        
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square9-1">
         <label for="square9-1" class="moveNumberU" id="moveNumber9-1">0</label>
         <img src="Blank.svg" alt=" " class="blankSquareU" id="square9-2">

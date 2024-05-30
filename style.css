@@ -184,11 +184,19 @@ line {
 }
 
 .active {
-  border: rgb(0, 255, 102) 3px solid;
-  margin: 0;
   opacity: 100%;
 }
 
 .winLineU {
   visibility: hidden;  
 }
+
+.bigLine {
+  visibility: visible;
+}
+
+.smallLine1 {
+  visibility: visible;
+  stroke: rgb(0, 255, 102);
+}
+
