@@ -6,25 +6,24 @@
 
 
 
-form {
+form, h3 {
   color: #20d54d
 }
 
-h1 {
+h1{
   color: #23b24d
 }
 
-a {
-  border: 1px solid #23b24d;
+.home {
   text-decoration: none;
   color: black;
   padding: 1px;
-  background-color: #20d54d;
+  text-align: left;
+  border: solid black 1px;
+  border-radius: 2px;
+  background-color: #23b24d;
 }
 
-a:hover {
-  background-color: white;
-}
 
 .blankSquare {
   width: 110px;
@@ -50,14 +49,30 @@ a:hover {
   margin: 0;
 }
 
-.winSquare {
-  width: 110px;
-  height: 110px;
-  padding: 5px;
-  border: 2px black solid ;
+.blankSquareU {
+  width: 70px;
+  height: 70px;
+  padding: 0px;
+  border: 1px black;
   margin: 0;
-  
 }
+.squareU { 
+  width: 70px;
+  height: 70px;
+  padding: 5px;
+  border: 1.5px black solid ;
+  margin: 0;
+}
+.moveNumberU {
+  display: inline-block;
+  position:relative;
+  right:15px;
+  bottom: 5px;
+  width: 0;
+  height:0;
+  margin: 0;
+}
+
 
 .horizontal {
   height: 2px;
@@ -108,6 +123,72 @@ a:hover {
   left: 586px
 }
 
-button {
+#again, #againU {
   visibility: hidden;
+}
+
+.notClicked, .gameType {
+  margin: 15px;
+  padding: 5px;
+  background-color: #20d54d;
+  border-radius: 5px;
+}
+
+.clicked {
+  margin: 15px;
+  padding: 5px;
+  background-color: #1aab3e;
+  border-radius: 5px;
+}
+
+#play {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#selectError {
+  visibility: hidden;
+}
+
+.gameType {
+  text-decoration: none;
+  border: solid black 1px;
+}
+
+.bigSquare {
+  display: inline-block;
+  margin: 3px;
+  opacity: 75%;
+}
+
+#title {
+  color: #23b24d
+}
+
+svg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+circle {
+  visibility: hidden;
+}
+
+rect {
+  visibility: hidden;
+}
+
+line {
+  visibility: hidden;
+}
+
+.active {
+  border: rgb(0, 255, 102) 3px solid;
+  margin: 0;
+  opacity: 100%;
+}
+
+.winLineU {
+  visibility: hidden;  
 }

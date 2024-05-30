@@ -10,7 +10,7 @@ let wait = false
 // validPaperMoves = [false, false, false, false, false, true, false, false, false]
 // validScissorsMoves = [false, false, true, false, true, false, false, false, false]
 
-function turnIncrement() {
+function turnIncrementOld() {
   turnNumber++
   if (turnNumber%3 === 1) {
     turnHeader.textContent = "Rock's Turn";
@@ -19,11 +19,11 @@ function turnIncrement() {
   } else {
     turnHeader.textContent = "Scissors' Turn";
   }
-  checkForValidMove()
+  checkForValidMoveOld()
 }
 
-function checkForValidMove() {
-  if (!checkForWin()) {
+function checkForValidMoveOld() {
+  if (!checkForSquareWinOld()) {
     if (turnNumber%3 === 1) {
       for (let i = 0; i < validRockMoves.length; i++) {
         if (validRockMoves[i]) {
@@ -32,7 +32,7 @@ function checkForValidMove() {
           turnHeader.textContent = 'No Valid Move For Rock'
           wait = true
           setTimeout(() => {
-            turnIncrement()
+            turnIncrementOld()
             wait = false
           }, 2000)
           break
@@ -46,7 +46,7 @@ function checkForValidMove() {
           turnHeader.textContent = 'No Valid Move For Paper'
           wait = true
           setTimeout(() => {
-            turnIncrement()
+            turnIncrementOld()
             wait = false
           }, 2000)
           break
@@ -60,7 +60,7 @@ function checkForValidMove() {
           turnHeader.textContent = 'No Valid Move For Scissors'
           wait = true
           setTimeout(() => {
-            turnIncrement()
+            turnIncrementOld()
             wait = false
           }, 2000)
           break
@@ -70,7 +70,7 @@ function checkForValidMove() {
   }
 }
 
-function updateSquare(square) {
+function updateSquareOld(square) {
   moveNumbers[square].textContent++
   if (turnNumber%3 === 1) {
     squares[square].setAttribute('src', 'Rock.jpeg')
@@ -122,14 +122,14 @@ function updateSquare(square) {
     }
   } 
   squares[square].classList.replace('blankSquare', 'square');
-  turnIncrement()
-  if (checkForWin()) {
+  turnIncrementOld()
+  if (checkForSquareWinOld()) {
     document.getElementById('again').style.visibility = 'visible'
   }
 }
 
 
-function checkForWin() {
+function checkForSquareWinOld() {
   for (let i = 0; i < 7; i += 3) {
     if ((squares[i].getAttribute('src') === squares[i+1].getAttribute('src')) && (squares[i+1].getAttribute('src') === squares[i+2].getAttribute('src')) && (squares[i].getAttribute('src') !== 'Blank.svg')) {
         if (i === 0) {
@@ -203,7 +203,7 @@ function checkForWin() {
   return true;
 }
 
-function checkIfMoveIsValid(square) {
+function checkIfMoveIsValidOld(square) {
 
   let valid = true;
   if (turnNumber%3 === 1) {
@@ -221,59 +221,59 @@ function checkIfMoveIsValid(square) {
   } 
   if (valid) {
     document.getElementById('valid').textContent = ""
-    updateSquare(square)
+    updateSquareOld(square)
   } else {
     document.getElementById('valid').textContent = "Not a Valid Move"
   }
 }
 
 squares[0].onclick = () => {
-  if (!checkForWin() && !wait) {
-    checkIfMoveIsValid(0);
+  if (!checkForSquareWinOld() && !wait) {
+    checkIfMoveIsValidOld(0);
   }
 }
 squares[1].onclick = () => {
-  if (!checkForWin() && !wait) {
-    checkIfMoveIsValid(1);
+  if (!checkForSquareWinOld() && !wait) {
+    checkIfMoveIsValidOld(1);
   }
 }
 squares[2].onclick = () => {
-  if (!checkForWin() && !wait) {
-    checkIfMoveIsValid(2);
+  if (!checkForSquareWinOld() && !wait) {
+    checkIfMoveIsValidOld(2);
   }
 }
 squares[3].onclick = () => {
-  if (!checkForWin() && !wait) {
-    checkIfMoveIsValid(3);
+  if (!checkForSquareWinOld() && !wait) {
+    checkIfMoveIsValidOld(3);
   }
 }
 squares[4].onclick = () => {
-  if (!checkForWin() && !wait) {
-    checkIfMoveIsValid(4);
+  if (!checkForSquareWinOld() && !wait) {
+    checkIfMoveIsValidOld(4);
   }
 }
 squares[5].onclick = () => {
-  if (!checkForWin() && !wait) {
-    checkIfMoveIsValid(5);
+  if (!checkForSquareWinOld() && !wait) {
+    checkIfMoveIsValidOld(5);
   }
 }
 squares[6].onclick = () => {
-  if (!checkForWin() && !wait) {
-    checkIfMoveIsValid(6);
+  if (!checkForSquareWinOld() && !wait) {
+    checkIfMoveIsValidOld(6);
   }
 }
 squares[7].onclick = () => {
-  if (!checkForWin() && !wait) {
-    checkIfMoveIsValid(7);
+  if (!checkForSquareWinOld() && !wait) {
+    checkIfMoveIsValidOld(7);
   }
 }
 squares[8].onclick = () => {
-  if (!checkForWin() && !wait) {
-    checkIfMoveIsValid(8);
+  if (!checkForSquareWinOld() && !wait) {
+    checkIfMoveIsValidOld(8);
   }
 }
 
-function reset() {
+function resetOld() {
   for (let i = 0; i < squares.length; i++) {
     squares[i].setAttribute('src', 'Blank.svg')
     squares[i].setAttribute('alt', "")
@@ -298,5 +298,5 @@ function reset() {
   document.getElementById('diagonal2').style.visibility = 'hidden';
 }
 document.getElementById('again').onclick = () => {
-  reset()
+  resetOld()
 }
