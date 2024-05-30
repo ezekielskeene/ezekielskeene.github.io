@@ -24,17 +24,18 @@ const turnHeader = document.getElementById('turnU')
 let bigSquareValues = ['', '', '', '', '', '', '', '', '']
 let activeSquare = false
 let fullSquares = [false, false, false, false, false, false, false, false, false]
-// validRockMoves = [true, true, true, true, true, true, true, true, true]
-// validPaperMoves = [true, true, true, true, true, true, true, true, true]
-// validScissorsMoves = [true, true, true, true, true, true, true, true, true]
+
 let validRockMoves = [[true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true]]
 let validPaperMoves = [[true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true]]
 let validScissorsMoves = [[true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true]]
 let wait = false
-//validRockMoves = [false, true, false, false, false, false, false, false, false]
-// validPaperMoves = [false, false, false, false, false, true, false, false, false]
-// validScissorsMoves = [false, false, true, false, true, false, false, false, false]
-
+// for (let i = 0; i < 9; i++)  {
+//     for (let j = 0; j < 9; j++)  {
+//         validRockMoves[i][j] = false
+//         validPaperMoves[i][j] = false
+//         validScissorsMoves[i][j] = false
+//     }
+// }
 
 //-------------------------------------------------------------------------------------------------
 
@@ -51,32 +52,48 @@ function turnIncrement(i) {
     if (checkForWin()) {
         if (turnNumber%3 === 2) {
             turnHeader.textContent = "Rock Wins!";
-          } else if (turnNumber%3 === 0) {
+        } else if (turnNumber%3 === 0) {
             turnHeader.textContent = "Paper Wins!";
-          } else {
+        } else {
             turnHeader.textContent = "Scissors Wins!";
-          }
+        }
     }
+    checkForWin()
 }
 
 function checkForValidMove() {
     if (!checkForWin()) {
         if (turnNumber%3 === 1) {
-          for (let i = 0; i < 9; i++) {
-            for (let j = 0; j < 9; j++) {
-                if (validRockMoves[i][j]) {
-                    break
-                } else if (i === 8 && j === 8){
-                    turnHeader.textContent = 'No Valid Move For Rock'
-                    wait = true
-                    setTimeout(() => {
-                        turnIncrement()
-                        wait = false
-                    }, 2000)
-                    break
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    if (validRockMoves[i][j]) {
+                        break
+                    } else if (i === 8 && j === 8){
+                        turnHeader.textContent = 'No Valid Move For Rock'
+                        wait = true
+                        setTimeout(() => {
+                            turnIncrement()
+                            wait = false
+                        }, 2000)
+                        break
+                    }
                 }
             }
-          }
+            if (!fullSquares[activeSquare]) {
+                for (let i = 0; i < 9; i++) {
+                    if (validRockMoves[activeSquare][i]) {
+                        break
+                    } else if (i === 8) {
+                        turnHeader.textContent = 'No Valid Move For Rock'
+                        wait = true
+                        setTimeout(() => {
+                            turnIncrement()
+                            wait = false
+                        }, 2000)
+                        break
+                    }
+                }
+            }
         } else if (turnNumber%3 === 2) {
             for (let i = 0; i < 9; i++) {
                 for (let j = 0; j < 9; j++) {
@@ -92,7 +109,22 @@ function checkForValidMove() {
                         break
                     }
                 }
-              }
+            }
+            if (!fullSquares[activeSquare]) {
+                for (let i = 0; i < 9; i++) {
+                    if (validPaperMoves[activeSquare][i]) {
+                        break
+                    } else if (i === 8) {
+                        turnHeader.textContent = 'No Valid Move For Paper'
+                        wait = true
+                        setTimeout(() => {
+                            turnIncrement()
+                            wait = false
+                        }, 2000)
+                        break
+                    }
+                }
+            }
         } else {  
             for (let i = 0; i < 9; i++) {
                 for (let j = 0; j < 9; j++) {
@@ -108,7 +140,22 @@ function checkForValidMove() {
                         break
                     }
                 }
-              }
+            }
+            if (!fullSquares[activeSquare]) {
+                for (let i = 0; i < 9; i++) {
+                    if (validScissorsMoves[activeSquare][i]) {
+                        break
+                    } else if (i === 8) {
+                        turnHeader.textContent = 'No Valid Move For Scissors'
+                        wait = true
+                        setTimeout(() => {
+                            turnIncrement()
+                            wait = false
+                        }, 2000)
+                        break
+                    }
+                }
+            }
         }
       }
 }
@@ -209,6 +256,7 @@ function checkForWin() {
             } else {
                 document.getElementById('horizontalU3').style.visibility = 'visible'
             }
+            document.getElementById('againU').style.visibility = 'visible'
             document.getElementById('validU').textContent = ''
             return true;
         }
@@ -222,6 +270,7 @@ function checkForWin() {
             } else {
                 document.getElementById('verticalU3').style.visibility = 'visible'
             }
+            document.getElementById('againU').style.visibility = 'visible'
             document.getElementById('validU').textContent = ''
             return true;
         }
@@ -229,13 +278,34 @@ function checkForWin() {
     if (bigSquareValues[0] === bigSquareValues[4] && bigSquareValues[4] === bigSquareValues[8] && bigSquareValues[0] !== '') {   
         document.getElementById('diagonalU1').style.visibility = 'visible'
         document.getElementById('validU').textContent = ''
+        document.getElementById('againU').style.visibility = 'visible'
         return true;
     }
     if (bigSquareValues[2] === bigSquareValues[4] && bigSquareValues[4] === bigSquareValues[6] && bigSquareValues[2] !== '') {
         document.getElementById('diagonalU2').style.visibility = 'visible'
         document.getElementById('validU').textContent = ''
+        document.getElementById('againU').style.visibility = 'visible'
         return true;
     }
+    let check1 = false
+    let check2 = false
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if (validRockMoves[i][j] || validPaperMoves[i][j] || validScissorsMoves[i][j]) {
+                check1 = true
+            }
+        }
+        if (!fullSquares[i]) {
+            check2 = true
+        }
+    }
+    if (check1 && check2) {
+        return false
+    }
+    turnHeader.textContent = 'No One Wins :('
+    document.getElementById('validU').textContent = ''
+    document.getElementById('againU').style.visibility = 'visible'
+    return true
 }
 
 function updateSquare (i, j) {
@@ -292,7 +362,8 @@ function updateSquare (i, j) {
                 }
             }
         }
-      }
+        
+    }
     squares[i][j].classList.replace('blankSquareU', 'squareU');
     checkForSquareWin(i)
     if (fullSquares[j] && !checkForWin()) {
@@ -316,6 +387,7 @@ function updateSquare (i, j) {
             bigSquares[I].classList.replace('active', 'notActive')
         }
     }
+    document.getElementById('validU').textContent = ""
     activeSquare = j
     turnIncrement(i);
 }
@@ -334,100 +406,61 @@ for (let i = 0; i < squares.length; i++) {
     }
 }
 
-function resetOld() {
-  for (let i = 0; i < squares.length; i++) {
-    squares[i].setAttribute('src', 'Blank.svg')
-    squares[i].setAttribute('alt', "")
-    moveNumbers[i].textContent = 0
-    squares[i].style.borderColor = 'black';
-    moveNumbers[i].style.color = 'black';
-    squares[i].classList.replace('squareU', 'blankSquareU');
-  }
-  validRockMoves = [true, true, true, true, true, true, true, true, true]
-  validPaperMoves = [true, true, true, true, true, true, true, true, true]
-  validScissorsMoves = [true, true, true, true, true, true, true, true, true]
-  turnHeader.textContent = "Rock's Turn"
-  document.getElementById('againU').style.visibility = 'hidden'
-  turnNumber = 1;
 
-}
 document.getElementById('againU').onclick = () => {
-  resetOld()
+  reset()
 }
 
+function reset() {
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            squares[i][j].setAttribute('src', 'Blank.svg')
+            squares[i][j].setAttribute('alt', '')
+            moveNumbers[i][j].textContent = 0
+            validRockMoves[i][j] = true
+            validPaperMoves[i][j] = true
+            validScissorsMoves[i][j] = true
+            squares[i][j].classList.replace('squareU', 'blankSquareU');
+            squares[i][j].style.borderColor = 'black';
+            moveNumbers[i][j].style.color = 'black';
+        }
+        rockWinSquares[i].style.visibility = 'hidden'
+        paperWinSquares[i].style.visibility = 'hidden'
+        scissorsWinSquares1[i].style.visibility = 'hidden'
+        scissorsWinSquares2[i].style.visibility = 'hidden'
+        bigSquares[i].classList.replace('active', 'notActive')
+        bigSquareValues[i] = ''
+        fullSquares[i] = false
+    }
+    turnNumber = 1
+    turnHeader.textContent = "Rock's Turn"
+    activeSquare = false
+    document.getElementById('againU').style.visibility = 'hidden'
+    document.getElementById('horizontalU1').style.visibility = 'hidden'
+    document.getElementById('horizontalU2').style.visibility = 'hidden'
+    document.getElementById('horizontalU3').style.visibility = 'hidden'
+    document.getElementById('verticalU1').style.visibility = 'hidden'
+    document.getElementById('verticalU2').style.visibility = 'hidden'
+    document.getElementById('verticalU3').style.visibility = 'hidden'
+    document.getElementById('diagonalU1').style.visibility = 'hidden'
+    document.getElementById('diagonalU2').style.visibility = 'hidden'
+}
+
+const rockWinSquares = [document.getElementById('rock1'), document.getElementById('rock2'), document.getElementById('rock3'), document.getElementById('rock4'), document.getElementById('rock5'), document.getElementById('rock6'), document.getElementById('rock7'), document.getElementById('rock8'), document.getElementById('rock9')]
+const paperWinSquares = [document.getElementById('paper1'), document.getElementById('paper2'), document.getElementById('paper3'), document.getElementById('paper4'), document.getElementById('paper5'), document.getElementById('paper6'), document.getElementById('paper7'), document.getElementById('paper8'), document.getElementById('paper9'), ]
+const scissorsWinSquares1 = [document.getElementById('scissors1-1'), document.getElementById('scissors1-2'), document.getElementById('scissors1-3'), document.getElementById('scissors1-4'), document.getElementById('scissors1-5'), document.getElementById('scissors1-6'), document.getElementById('scissors1-7'), document.getElementById('scissors1-8'), document.getElementById('scissors1-9'), ]
+const scissorsWinSquares2 = [document.getElementById('scissors2-1'), document.getElementById('scissors2-2'), document.getElementById('scissors2-3'), document.getElementById('scissors2-4'), document.getElementById('scissors2-5'), document.getElementById('scissors2-6'), document.getElementById('scissors2-7'), document.getElementById('scissors2-8'), document.getElementById('scissors2-9'), ]
 
 function updateWinSquares(i) {
     if (turnNumber%3 === 1) {
         bigSquareValues[i] = 'R'
-        if (i === 0) {
-            document.getElementById('rock1').style.visibility = 'visible'
-        } else if (i === 1) {
-            document.getElementById('rock2').style.visibility = 'visible'
-        } else if (i === 2) {
-            document.getElementById('rock3').style.visibility = 'visible'
-        } else if (i === 3) {
-            document.getElementById('rock4').style.visibility = 'visible'
-        } else if (i === 4) {
-            document.getElementById('rock5').style.visibility = 'visible'
-        } else if (i === 5) {
-            document.getElementById('rock6').style.visibility = 'visible'
-        } else if (i === 6) {
-            document.getElementById('rock7').style.visibility = 'visible'
-        } else if (i === 7) {
-            document.getElementById('rock8').style.visibility = 'visible'
-        } else if (i === 8) {
-            document.getElementById('rock9').style.visibility = 'visible'
-        }
+        rockWinSquares[i].style.visibility = 'visible'
     } else if (turnNumber%3 === 2) {
         bigSquareValues[i] = 'P'
-        if (i === 0) {
-            document.getElementById('paper1').style.visibility = 'visible'
-        } else if (i === 1) {
-            document.getElementById('paper2').style.visibility = 'visible'
-        } else if (i === 2) {
-            document.getElementById('paper3').style.visibility = 'visible'
-        } else if (i === 3) {
-            document.getElementById('paper4').style.visibility = 'visible'
-        } else if (i === 4) {
-            document.getElementById('paper5').style.visibility = 'visible'
-        } else if (i === 5) {
-            document.getElementById('paper6').style.visibility = 'visible'
-        } else if (i === 6) {
-            document.getElementById('paper7').style.visibility = 'visible'
-        } else if (i === 7) {
-            document.getElementById('paper8').style.visibility = 'visible'
-        } else if (i === 8) {
-            document.getElementById('paper9').style.visibility = 'visible'
-        }
+        paperWinSquares[i].style.visibility = 'visible'
     } else {
         bigSquareValues[i] = 'S'
-        if (i === 0) {
-            document.getElementById('scissors1-1').style.visibility = 'visible'
-            document.getElementById('scissors2-1').style.visibility = 'visible'
-        } else if (i === 1) {
-            document.getElementById('scissors1-2').style.visibility = 'visible'
-            document.getElementById('scissors2-2').style.visibility = 'visible'
-        } else if (i === 2) {
-            document.getElementById('scissors1-3').style.visibility = 'visible'
-            document.getElementById('scissors2-3').style.visibility = 'visible'
-        } else if (i === 3) {
-            document.getElementById('scissors1-4').style.visibility = 'visible'
-            document.getElementById('scissors2-4').style.visibility = 'visible'
-        } else if (i === 4) {
-            document.getElementById('scissors1-5').style.visibility = 'visible'
-            document.getElementById('scissors2-5').style.visibility = 'visible'
-        } else if (i === 5) {
-            document.getElementById('scissors1-6').style.visibility = 'visible'
-            document.getElementById('scissors2-6').style.visibility = 'visible'
-        } else if (i === 6) {
-            document.getElementById('scissors1-7').style.visibility = 'visible'
-            document.getElementById('scissors2-7').style.visibility = 'visible'
-        } else if (i === 7) {
-            document.getElementById('scissors1-8').style.visibility = 'visible'
-            document.getElementById('scissors2-8').style.visibility = 'visible'
-        } else if (i === 8) {
-            document.getElementById('scissors1-9').style.visibility = 'visible'
-            document.getElementById('scissors2-9').style.visibility = 'visible'
-        }
+        scissorsWinSquares1[i].style.visibility = 'visible'
+        scissorsWinSquares2[i].style.visibility = 'visible'
     }
 }
