@@ -18,13 +18,17 @@ for (let i = 0; i < 7; i++) {
     })
     for (let j = 0; j < 6; j++) {
         spaces[i][j].addEventListener('mouseover', () => {
-            if (spaceColors[i][j] === 'E' && !checkForWin()) {
-                spaces[i][j].style.backgroundColor = '#23b24d'
+            if (spaceColors[i][0] === 'E' && !checkForWin()) {
+                if (currentColor[0] === 'R') {
+                    spaces[i][0].style.backgroundColor = 'rgb(255, 86, 86)'
+                } else {
+                    spaces[i][0].style.backgroundColor = 'rgb(255, 255, 100)'
+                }
             }
         })
         spaces[i][j].addEventListener('mouseout', () => {
-            if (spaceColors[i][j] === 'E') {
-                spaces[i][j].style.backgroundColor = '#20d54d'
+            if (spaceColors[i][0] === 'E') {
+                spaces[i][0].style.backgroundColor = 'white'
             }
         })
     }
@@ -43,9 +47,15 @@ function click(i) {
             if (currentColor[0] === 'R') {
                 document.getElementById('turnHeader').textContent = "Yellow's Turn"
                 currentColor = ['Y', 'yellow']
+                if (spaceColors[i][0] === 'E') {
+                    spaces[i][0].style.backgroundColor = 'rgb(255, 255, 100)'
+                }
             } else {
                 document.getElementById('turnHeader').textContent = "Red's Turn"
                 currentColor = ['R', 'red']
+                if (spaceColors[i][0] === 'E') {
+                    spaces[i][0].style.backgroundColor = 'rgb(255, 86, 86)'
+                }
             }
             break
         } else if (j === 0) {
@@ -94,7 +104,7 @@ function reset() {
     for (let i = 0; i < 7; i++) {
         for (let j = 0; j < 6; j++) {
             spaceColors[i][j] = 'E'
-            spaces[i][j].style.backgroundColor = '#20d54d'
+            spaces[i][j].style.backgroundColor = 'white'
         }
     }
     currentColor = ['R', 'red']
