@@ -16,10 +16,23 @@ for (let i = 0; i < 7; i++) {
             click(i)
         }
     })
+    for (let j = 0; j < 6; j++) {
+        spaces[i][j].addEventListener('mouseover', () => {
+            if (spaceColors[i][j] === 'E') {
+                spaces[i][j].style.backgroundColor = '#23b24d'
+            }
+        })
+        spaces[i][j].addEventListener('mouseout', () => {
+            if (spaceColors[i][j] === 'E') {
+                spaces[i][j].style.backgroundColor = '#20d54d'
+            }
+        })
+    }
 }
 document.getElementById('reset').addEventListener('click', () => {
     reset()
 })
+
 
 function click(i) {
     for (let j = 5; j >= 0; j--) {       

@@ -15,17 +15,27 @@ button {
     width: 80px;
     height: 80px;
     background-color: #20d54d;
-    border-radius: 0px;
+    border-radius: 40px;
     border: 2px solid transparent;
     margin-bottom: 0px;
 
 }
 
-button:hover {
-    background-color: #23b24d;
+
+#boardBackground {
+    pointer-events: none;
+    position: absolute;
+    bottom: 207px;
+    left:548px;
+    z-index: -1;
 }
 
-.column {
+.backgroundSpace {
+    border-radius: 0;
+}
+
+
+.column, .backgroundColumn {
     display:inline-block
 }
 
