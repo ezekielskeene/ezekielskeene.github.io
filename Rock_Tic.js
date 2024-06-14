@@ -124,7 +124,7 @@ function updateSquareOld(square) {
   squares[square].classList.replace('blankSquare', 'square');
   turnIncrementOld()
   if (checkForSquareWinOld()) {
-    document.getElementById('again').style.visibility = 'visible'
+    document.getElementById('again').textContent = "Play Again?"
   }
 }
 
@@ -286,7 +286,7 @@ function resetOld() {
   validPaperMoves = [true, true, true, true, true, true, true, true, true]
   validScissorsMoves = [true, true, true, true, true, true, true, true, true]
   turnHeader.textContent = "Rock's Turn"
-  document.getElementById('again').style.visibility = 'hidden'
+  document.getElementById('again').textContent = "Reset"
   turnNumber = 1;
   document.getElementById('horizontal1').style.visibility = 'hidden';
   document.getElementById('horizontal2').style.visibility = 'hidden';

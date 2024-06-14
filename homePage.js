@@ -15,7 +15,7 @@ document.getElementById('ultimate').onclick = () => {
 }
 
 document.getElementById('play').onclick = () => {
-    if (normal) {
+    if (normal) {   
         window.location.href = 'Rock-Tic.html';
         document.getElementById('selectError').style.visibility = 'hidden'
     } else if (ultimate) {

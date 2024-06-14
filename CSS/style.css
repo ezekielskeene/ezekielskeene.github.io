@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+h3 {
+  color: #20d54d
+ }
+
+h1{
+  color: #23b24d
+}
+
+.gameLink {
+  margin: 15px;
+  padding: 4px;
+  background-color: #20d54d;
+  border-radius: 5px;
+  text-decoration: none;
+  border: solid black 1px;
+}
+

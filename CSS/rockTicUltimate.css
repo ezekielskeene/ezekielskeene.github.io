@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+.home {
+    text-decoration: none;
+    color: black;
+    padding: 1px;
+    text-align: left;
+    border: solid black 1px;
+    border-radius: 2px;
+    background-color: #23b24d;
+  }
+
+.blankSquareU {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    border: 1px black;
+    margin: 0;
+  }
+.squareU { 
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    border: 1.5px black solid ;
+    margin: 0;
+  }
+.moveNumberU {
+    display: inline-block;
+    position:relative;
+    right:15px;
+    bottom: 5px;
+    width: 0;
+    height:0;
+    margin: 0;
+  }
+
+
+
+.bigSquare {
+    display: inline-block;
+    margin: 3px;
+    opacity: 75%;
+  }
+  
+#title {
+    color: #23b24d
+  }
+  
+svg {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+circle {
+    visibility: hidden;
+  }
+  
+rect {
+    visibility: hidden;
+  }
+  
+line {
+    visibility: hidden;
+  }
+  
+.active {
+    opacity: 100%;
+  }
+  
+.winLineU {
+    visibility: hidden;  
+  }
+  
+.bigLine {
+    visibility: visible;
+  }

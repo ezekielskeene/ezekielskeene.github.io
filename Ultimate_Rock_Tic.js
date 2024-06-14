@@ -256,7 +256,7 @@ function checkForWin() {
             } else {
                 document.getElementById('horizontalU3').style.visibility = 'visible'
             }
-            document.getElementById('againU').style.visibility = 'visible'
+            document.getElementById('againU').textContent = "Play Again?"
             document.getElementById('validU').textContent = ''
             return true;
         }
@@ -270,7 +270,7 @@ function checkForWin() {
             } else {
                 document.getElementById('verticalU3').style.visibility = 'visible'
             }
-            document.getElementById('againU').style.visibility = 'visible'
+            document.getElementById('againU').textContent = "Play Again?"
             document.getElementById('validU').textContent = ''
             return true;
         }
@@ -278,13 +278,13 @@ function checkForWin() {
     if (bigSquareValues[0] === bigSquareValues[4] && bigSquareValues[4] === bigSquareValues[8] && bigSquareValues[0] !== '') {   
         document.getElementById('diagonalU1').style.visibility = 'visible'
         document.getElementById('validU').textContent = ''
-        document.getElementById('againU').style.visibility = 'visible'
+        document.getElementById('againU').textContent = "Play Again?"
         return true;
     }
     if (bigSquareValues[2] === bigSquareValues[4] && bigSquareValues[4] === bigSquareValues[6] && bigSquareValues[2] !== '') {
         document.getElementById('diagonalU2').style.visibility = 'visible'
         document.getElementById('validU').textContent = ''
-        document.getElementById('againU').style.visibility = 'visible'
+        document.getElementById('againU').textContent = "Play Again?"
         return true;
     }
     let check1 = false
@@ -304,7 +304,7 @@ function checkForWin() {
     }
     turnHeader.textContent = 'No One Wins :('
     document.getElementById('validU').textContent = ''
-    document.getElementById('againU').style.visibility = 'visible'
+    document.getElementById('againU').textContent = "Play Again?"
     return true
 }
 
@@ -393,6 +393,8 @@ document.getElementById('againU').onclick = () => {
 
 function reset() {
     for (let i = 0; i < 9; i++) {
+        bigSquares[i].classList.replace('active', 'notActive')
+        activeCovers[i].style.visibility = 'hidden'
         for (let j = 0; j < 9; j++) {
             squares[i][j].setAttribute('src', 'Blank.svg')
             squares[i][j].setAttribute('alt', '')
@@ -415,7 +417,7 @@ function reset() {
     turnNumber = 1
     turnHeader.textContent = "Rock's Turn"
     activeSquare = false
-    document.getElementById('againU').style.visibility = 'hidden'
+    document.getElementById('againU').textContent = "Reset"
     document.getElementById('horizontalU1').style.visibility = 'hidden'
     document.getElementById('horizontalU2').style.visibility = 'hidden'
     document.getElementById('horizontalU3').style.visibility = 'hidden'
