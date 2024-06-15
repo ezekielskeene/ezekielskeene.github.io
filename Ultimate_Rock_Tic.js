@@ -29,6 +29,7 @@ let validRockMoves = [[true, true, true, true, true, true, true, true, true], [t
 let validPaperMoves = [[true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true]]
 let validScissorsMoves = [[true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true]]
 let wait = false
+let pictureType = 'Normal'
 // for (let i = 0; i < 9; i++)  {
 //     for (let j = 0; j < 9; j++)  {
 //         validRockMoves[i][j] = false
@@ -311,7 +312,11 @@ function checkForWin() {
 function updateSquare (i, j) {
     moveNumbers[i][j].textContent++
     if (turnNumber%3 === 1) {
-        squares[i][j].setAttribute('src', 'Rock.jpeg')
+        if (pictureType === 'Normal') {
+            squares[i][j].setAttribute('src', 'Rock.jpeg')
+        } else {
+            squares[i][j].setAttribute('src', 'RealisticRock.jpeg')
+        }
         squares[i][j].setAttribute('alt', 'R')
         validRockMoves[i][j] = false;
         validScissorsMoves[i][j] = false
@@ -324,7 +329,11 @@ function updateSquare (i, j) {
             validPaperMoves[i][j] = false
         }
     } else if (turnNumber%3 === 2) {
-        squares[i][j].setAttribute('src', 'Paper.svg')
+        if (pictureType === 'Normal') {
+            squares[i][j].setAttribute('src', 'Paper.svg')
+        } else {
+            squares[i][j].setAttribute('src', 'RealisticPaper.jpeg')
+        }
         squares[i][j].setAttribute('alt', 'P')
         validRockMoves[i][j] = false;
         validPaperMoves[i][j] = false
@@ -337,7 +346,11 @@ function updateSquare (i, j) {
             validScissorsMoves[i][j] = false
         }
     } else {
-        squares[i][j].setAttribute('src', 'Scissors.svg')
+        if (pictureType === 'Normal') {
+            squares[i][j].setAttribute('src', 'Scissors.svg')
+        } else {
+            squares[i][j].setAttribute('src', 'RealisticScissors.jpeg')
+        }
         squares[i][j].setAttribute('alt', 'S')
         validPaperMoves[i][j] = false;
         validScissorsMoves[i][j] = false
@@ -353,12 +366,22 @@ function updateSquare (i, j) {
     if (turnNumber === 3) {
         for (let I = 0; I < 9; I++) {
             for (let J = 0; J < 9; J++) {
-                if (squares[I][J].getAttribute('src') === 'Rock.jpeg') {
-                    validPaperMoves[I][J] = true
-                } else if (squares[I][J].getAttribute('src') === 'Paper.svg') {
-                    validScissorsMoves[I][J] = true
-                } else if (squares[I][J].getAttribute('src') === 'Scissors.svg') {
-                    validRockMoves[I][J] = true
+                if (pictureType === 'Normal') {
+                    if (squares[I][J].getAttribute('src') === 'Rock.jpeg') {
+                        validPaperMoves[I][J] = true
+                    } else if (squares[I][J].getAttribute('src') === 'Paper.svg') {
+                        validScissorsMoves[I][J] = true
+                    } else if (squares[I][J].getAttribute('src') === 'Scissors.svg') {
+                        validRockMoves[I][J] = true
+                    }
+                } else {
+                    if (squares[I][J].getAttribute('src') === 'RealisticRock.jpeg') {
+                        validPaperMoves[I][J] = true
+                    } else if (squares[I][J].getAttribute('src') === 'RealisticPaper.jpeg') {
+                        validScissorsMoves[I][J] = true
+                    } else if (squares[I][J].getAttribute('src') === 'RealisticScissors.jpeg') {
+                        validRockMoves[I][J] = true
+                    }
                 }
             }
         }
@@ -476,3 +499,32 @@ function setSquareToActive(i) {
         }
     }
 }
+document.getElementById('pictureSwapU').onclick = () => {
+    if (pictureType === 'Normal') {
+      for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if (squares[i][j].getAttribute('src') === 'Rock.jpeg') {
+            squares[i][j].setAttribute('src', 'RealisticRock.jpeg')
+            } else if (squares[i][j].getAttribute('src') === 'Paper.svg') {
+            squares[i][j].setAttribute('src', 'RealisticPaper.jpeg')
+            } else if (squares[i][j].getAttribute('src') === 'Scissors.svg') {
+            squares[i][j].setAttribute('src', 'RealisticScissors.jpeg')
+            }
+        }
+      }
+      pictureType = 'Realistic'
+    } else {
+      for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if (squares[i][j].getAttribute('src') === 'RealisticRock.jpeg') {
+            squares[i][j].setAttribute('src', 'Rock.jpeg')
+            } else if (squares[i][j].getAttribute('src') === 'RealisticPaper.jpeg') {
+            squares[i][j].setAttribute('src', 'Paper.svg')
+            } else if (squares[i][j].getAttribute('src') === 'RealisticScissors.jpeg') {
+            squares[i][j].setAttribute('src', 'Scissors.svg')
+            }
+        }
+      }
+      pictureType = 'Normal'
+    }
+  }
