@@ -69,6 +69,11 @@ function click(i) {
             document.getElementById('turnHeader').textContent = "Red Wins!"
         }
         document.getElementById('reset').textContent = "Play Again?"
+        for (let i = 0; i < 7; i++) {
+            if (spaceColors[i][0] === 'E') {
+                spaces[i][0].style.backgroundColor = 'white'
+            }
+        }
     }
 
 }
@@ -78,21 +83,37 @@ function checkForWin() {
         for (let j = 0; j < 6; j++) {
             if (j <= 2) {
                 if (spaceColors[i][j] === spaceColors[i][j+1] && spaceColors[i][j+1] === spaceColors[i][j+2] && spaceColors[i][j+2] === spaceColors[i][j+3]  && spaceColors[i][j] !== "E") {
+                    spaces[i][j].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i][j+1].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i][j+2].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i][j+3].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
                     return true
                 }
             }
             if (i <= 3) {
                 if (spaceColors[i][j] === spaceColors[i+1][j] && spaceColors[i+1][j] === spaceColors[i+2][j] && spaceColors[i+2][j] === spaceColors[i+3][j]  && spaceColors[i][j] !== "E") {
+                    spaces[i][j].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i+1][j].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i+2][j].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i+3][j].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
                     return true
                 }
             }
             if (i <= 3 && j <= 2) {
                 if (spaceColors[i][j] === spaceColors[i+1][j+1] && spaceColors[i+1][j+1] === spaceColors[i+2][j+2] && spaceColors[i+2][j+2] === spaceColors[i+3][j+3]  && spaceColors[i][j] !== "E") {
+                    spaces[i][j].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i+1][j+1].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i+2][j+2].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i+3][j+3].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
                     return true
                 }
             }
             if (i <= 3 && j >= 2) {
                 if (spaceColors[i][j] === spaceColors[i+1][j-1] && spaceColors[i+1][j-1] === spaceColors[i+2][j-2] && spaceColors[i+2][j-2] === spaceColors[i+3][j-3]  && spaceColors[i][j] !== "E") {
+                    spaces[i][j].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i+1][j-1].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i+2][j-2].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
+                    spaces[i+3][j-3].style.boxShadow = `0 0 10px 8px ${currentColor[1]}`
                     return true
                 }
             }
@@ -105,6 +126,7 @@ function reset() {
         for (let j = 0; j < 6; j++) {
             spaceColors[i][j] = 'E'
             spaces[i][j].style.backgroundColor = 'white'
+            spaces[i][j].style.boxShadow = `0 0 0 0 white`
         }
     }
     currentColor = ['R', 'red']
