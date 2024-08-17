@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class Rock_Tic {
+public class Rock_Tac {
     public static void setBoard() {
         ArrayList<String> blueSpaces = new ArrayList<>(spaces);
         for (int i = 0; i < 9; i++) {
