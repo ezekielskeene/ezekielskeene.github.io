@@ -215,25 +215,25 @@ function checkIfMoveIsValid(i, j) {
 
 function checkForSquareWin(i) {
     for (let j = 0; j < 7; j += 3) {
-        if ((squares[i][j].getAttribute('src') === squares[i][j+1].getAttribute('src')) && (squares[i][j+1].getAttribute('src') === squares[i][j+2].getAttribute('src')) && (squares[i][j].getAttribute('src') !== 'Blank.svg')) {
+        if ((squares[i][j].getAttribute('src') === squares[i][j+1].getAttribute('src')) && (squares[i][j+1].getAttribute('src') === squares[i][j+2].getAttribute('src')) && (squares[i][j].getAttribute('src') !== '/Blank.svg')) {
             fullSquares[i] = true
             updateWinSquares(i)
             return true;
         }
     }
     for (let j = 0; j < 3; j ++) {
-        if ((squares[i][j].getAttribute('src') === squares[i][j+3].getAttribute('src')) && (squares[i][j+3].getAttribute('src') === squares[i][j+6].getAttribute('src')) && (squares[i][j].getAttribute('src') !== 'Blank.svg')) {
+        if ((squares[i][j].getAttribute('src') === squares[i][j+3].getAttribute('src')) && (squares[i][j+3].getAttribute('src') === squares[i][j+6].getAttribute('src')) && (squares[i][j].getAttribute('src') !== '/Blank.svg')) {
             fullSquares[i] = true
             updateWinSquares(i)  
             return true;
         }
     }
-    if ((squares[i][0].getAttribute('src') === squares[i][4].getAttribute('src')) && (squares[i][4].getAttribute('src') === squares[i][8].getAttribute('src')) && (squares[i][0].getAttribute('src') !== 'Blank.svg')) {   
+    if ((squares[i][0].getAttribute('src') === squares[i][4].getAttribute('src')) && (squares[i][4].getAttribute('src') === squares[i][8].getAttribute('src')) && (squares[i][0].getAttribute('src') !== '/Blank.svg')) {   
         fullSquares[i] = true
         updateWinSquares(i)  
         return true;
     }
-    if ((squares[i][2].getAttribute('src') === squares[i][4].getAttribute('src')) && (squares[i][4].getAttribute('src') === squares[i][6].getAttribute('src')) && (squares[i][2].getAttribute('src') !== 'Blank.svg')) {
+    if ((squares[i][2].getAttribute('src') === squares[i][4].getAttribute('src')) && (squares[i][4].getAttribute('src') === squares[i][6].getAttribute('src')) && (squares[i][2].getAttribute('src') !== '/Blank.svg')) {
         fullSquares[i] = true
         updateWinSquares(i)
         return true;
@@ -313,9 +313,9 @@ function updateSquare (i, j) {
     moveNumbers[i][j].textContent++
     if (turnNumber%3 === 1) {
         if (pictureType === 'Normal') {
-            squares[i][j].setAttribute('src', 'Rock.jpeg')
+            squares[i][j].setAttribute('src', '/Rock.jpeg')
         } else {
-            squares[i][j].setAttribute('src', 'RealisticRock.jpeg')
+            squares[i][j].setAttribute('src', '/RealisticRock.jpeg')
         }
         squares[i][j].setAttribute('alt', 'R')
         validRockMoves[i][j] = false;
@@ -330,9 +330,9 @@ function updateSquare (i, j) {
         }
     } else if (turnNumber%3 === 2) {
         if (pictureType === 'Normal') {
-            squares[i][j].setAttribute('src', 'Paper.svg')
+            squares[i][j].setAttribute('src', '/Paper.svg')
         } else {
-            squares[i][j].setAttribute('src', 'RealisticPaper.jpeg')
+            squares[i][j].setAttribute('src', '/RealisticPaper.jpeg')
         }
         squares[i][j].setAttribute('alt', 'P')
         validRockMoves[i][j] = false;
@@ -347,9 +347,9 @@ function updateSquare (i, j) {
         }
     } else {
         if (pictureType === 'Normal') {
-            squares[i][j].setAttribute('src', 'Scissors.svg')
+            squares[i][j].setAttribute('src', '/Scissors.svg')
         } else {
-            squares[i][j].setAttribute('src', 'RealisticScissors.jpeg')
+            squares[i][j].setAttribute('src', '/RealisticScissors.jpeg')
         }
         squares[i][j].setAttribute('alt', 'S')
         validPaperMoves[i][j] = false;
@@ -367,19 +367,19 @@ function updateSquare (i, j) {
         for (let I = 0; I < 9; I++) {
             for (let J = 0; J < 9; J++) {
                 if (pictureType === 'Normal') {
-                    if (squares[I][J].getAttribute('src') === 'Rock.jpeg') {
+                    if (squares[I][J].getAttribute('src') === '/Rock.jpeg') {
                         validPaperMoves[I][J] = true
-                    } else if (squares[I][J].getAttribute('src') === 'Paper.svg') {
+                    } else if (squares[I][J].getAttribute('src') === '/Paper.svg') {
                         validScissorsMoves[I][J] = true
-                    } else if (squares[I][J].getAttribute('src') === 'Scissors.svg') {
+                    } else if (squares[I][J].getAttribute('src') === '/Scissors.svg') {
                         validRockMoves[I][J] = true
                     }
                 } else {
-                    if (squares[I][J].getAttribute('src') === 'RealisticRock.jpeg') {
+                    if (squares[I][J].getAttribute('src') === '/RealisticRock.jpeg') {
                         validPaperMoves[I][J] = true
-                    } else if (squares[I][J].getAttribute('src') === 'RealisticPaper.jpeg') {
+                    } else if (squares[I][J].getAttribute('src') === '/RealisticPaper.jpeg') {
                         validScissorsMoves[I][J] = true
-                    } else if (squares[I][J].getAttribute('src') === 'RealisticScissors.jpeg') {
+                    } else if (squares[I][J].getAttribute('src') === '/RealisticScissors.jpeg') {
                         validRockMoves[I][J] = true
                     }
                 }
@@ -419,7 +419,7 @@ function reset() {
         bigSquares[i].classList.replace('active', 'notActive')
         activeCovers[i].style.visibility = 'hidden'
         for (let j = 0; j < 9; j++) {
-            squares[i][j].setAttribute('src', 'Blank.svg')
+            squares[i][j].setAttribute('src', '/Blank.svg')
             squares[i][j].setAttribute('alt', '')
             moveNumbers[i][j].textContent = 0
             validRockMoves[i][j] = true
@@ -503,12 +503,12 @@ document.getElementById('pictureSwapU').onclick = () => {
     if (pictureType === 'Normal') {
       for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
-            if (squares[i][j].getAttribute('src') === 'Rock.jpeg') {
-            squares[i][j].setAttribute('src', 'RealisticRock.jpeg')
-            } else if (squares[i][j].getAttribute('src') === 'Paper.svg') {
-            squares[i][j].setAttribute('src', 'RealisticPaper.jpeg')
-            } else if (squares[i][j].getAttribute('src') === 'Scissors.svg') {
-            squares[i][j].setAttribute('src', 'RealisticScissors.jpeg')
+            if (squares[i][j].getAttribute('src') === '/Rock.jpeg') {
+            squares[i][j].setAttribute('src', '/RealisticRock.jpeg')
+            } else if (squares[i][j].getAttribute('src') === '/Paper.svg') {
+            squares[i][j].setAttribute('src', '/RealisticPaper.jpeg')
+            } else if (squares[i][j].getAttribute('src') === '/Scissors.svg') {
+            squares[i][j].setAttribute('src', '/RealisticScissors.jpeg')
             }
         }
       }
@@ -516,12 +516,12 @@ document.getElementById('pictureSwapU').onclick = () => {
     } else {
       for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
-            if (squares[i][j].getAttribute('src') === 'RealisticRock.jpeg') {
-            squares[i][j].setAttribute('src', 'Rock.jpeg')
-            } else if (squares[i][j].getAttribute('src') === 'RealisticPaper.jpeg') {
-            squares[i][j].setAttribute('src', 'Paper.svg')
-            } else if (squares[i][j].getAttribute('src') === 'RealisticScissors.jpeg') {
-            squares[i][j].setAttribute('src', 'Scissors.svg')
+            if (squares[i][j].getAttribute('src') === '/RealisticRock.jpeg') {
+            squares[i][j].setAttribute('src', '/Rock.jpeg')
+            } else if (squares[i][j].getAttribute('src') === '/RealisticPaper.jpeg') {
+            squares[i][j].setAttribute('src', '/Paper.svg')
+            } else if (squares[i][j].getAttribute('src') === '/RealisticScissors.jpeg') {
+            squares[i][j].setAttribute('src', '/Scissors.svg')
             }
         }
       }

@@ -7,6 +7,10 @@ let validPaperMoves = [true, true, true, true, true, true, true, true, true]
 let validScissorsMoves = [true, true, true, true, true, true, true, true, true]
 let wait = false
 let pictureType = 'Normal'
+let currentTurn = true;
+let isRockComp = false;
+let isPaperComp = false;
+let isScissorsComp = false;
 //validRockMoves = [false, true, false, false, false, false, false, false, false]
 // validPaperMoves = [false, false, false, false, false, true, false, false, false]
 // validScissorsMoves = [false, false, true, false, true, false, false, false, false]
@@ -15,12 +19,31 @@ function turnIncrement() {
   turnNumber++
   if (turnNumber%3 === 1) {
     turnHeader.textContent = "Rock's Turn";
+    if (isRockComp) {
+      turnNumber = false;
+    } else {
+      turnNumber = true;
+    }
   } else if (turnNumber%3 === 2) {
     turnHeader.textContent = "Paper's Turn"
+    if (isPaperComp) {
+      turnNumber = false;
+    } else {
+      turnNumber = true;
+    }
   } else {
     turnHeader.textContent = "Scissors' Turn";
+    if (isScissorsComp) {
+      turnNumber = false;
+    } else {
+      turnNumber = true;
+    }
   }
-  checkForValidMove()
+  if (checkForValidMove()) {
+    if (!turnNumber) {
+      computerMove();
+    }
+  }
 }
 
 function checkForValidMove() {
@@ -28,7 +51,7 @@ function checkForValidMove() {
     if (turnNumber%3 === 1) {
       for (let i = 0; i < validRockMoves.length; i++) {
         if (validRockMoves[i]) {
-          break
+          return true
         } else if (i === 8){
           turnHeader.textContent = 'No Valid Move For Rock'
           wait = true
@@ -36,13 +59,13 @@ function checkForValidMove() {
             turnIncrement()
             wait = false
           }, 2000)
-          break
+          return false
         }
       }
     } else if (turnNumber%3 === 2) {
       for (let i = 0; i < validPaperMoves.length; i++) {
         if (validPaperMoves[i]) {
-          break
+          return true
         } else if (i === 8){
           turnHeader.textContent = 'No Valid Move For Paper'
           wait = true
@@ -50,13 +73,13 @@ function checkForValidMove() {
             turnIncrement()
             wait = false
           }, 2000)
-          break
+          return false
         }
       } 
     } else {  
       for (let i = 0; i < validScissorsMoves.length; i++) {
         if (validScissorsMoves[i]) {
-          break
+          return true
         } else if (i === 8){
           turnHeader.textContent = 'No Valid Move For Scissors'
           wait = true
@@ -64,10 +87,16 @@ function checkForValidMove() {
             turnIncrement()
             wait = false
           }, 2000)
-          break
+          return false
         }
       } 
     }
+  }
+}
+
+function computerMove() {
+  while (!turnNumber) {
+    checkIfMoveIsValid(Math.round(Math.random()*9))
   }
 }
 
@@ -75,9 +104,9 @@ function updateSquare(square) {
   moveNumbers[square].textContent++
   if (turnNumber%3 === 1) {
     if (pictureType === 'Normal') {
-      squares[square].setAttribute('src', 'Rock.jpeg')
+      squares[square].setAttribute('src', '/Rock.jpeg')
     } else {
-      squares[square].setAttribute('src', 'RealisticRock.jpeg')
+      squares[square].setAttribute('src', '/RealisticRock.jpeg')
     }
     squares[square].setAttribute('alt', 'R')
     validRockMoves[square] = false
@@ -92,9 +121,9 @@ function updateSquare(square) {
     }
   } else if (turnNumber%3 === 2) {
     if (pictureType === 'Normal') {
-      squares[square].setAttribute('src', 'Paper.svg')
+      squares[square].setAttribute('src', '/Paper.svg')
     } else {
-      squares[square].setAttribute('src', 'RealisticPaper.jpeg')
+      squares[square].setAttribute('src', '/RealisticPaper.jpeg')
     }
     squares[square].setAttribute('alt', 'P')
     validRockMoves[square] = false
@@ -109,9 +138,9 @@ function updateSquare(square) {
     }
   } else {
     if (pictureType === 'Normal') {
-      squares[square].setAttribute('src', 'Scissors.svg')
+      squares[square].setAttribute('src', '/Scissors.svg')
     } else {
-      squares[square].setAttribute('src', 'RealisticScissors.jpeg')
+      squares[square].setAttribute('src', '/RealisticScissors.jpeg')
     }
     squares[square].setAttribute('alt', 'S')
     validPaperMoves[square] = false
@@ -125,19 +154,19 @@ function updateSquare(square) {
     if (turnNumber === 3) {
       for (let i = 0; i < 9; i++) {
         if (pictureType == 'Normal') {
-          if (squares[i].getAttribute('src') === 'Rock.jpeg') {
+          if (squares[i].getAttribute('src') === '/Rock.jpeg') {
             validPaperMoves[i] = true
-          } else if (squares[i].getAttribute('src') === 'Paper.svg') {
+          } else if (squares[i].getAttribute('src') === '/Paper.svg') {
             validScissorsMoves[i] = true
-          } else if (squares[i].getAttribute('src') === 'Scissors.svg') {
+          } else if (squares[i].getAttribute('src') === '/Scissors.svg') {
             validRockMoves[i] = true
           }
         } else {
-          if (squares[i].getAttribute('src') === 'RealisticRock.jpeg') {
+          if (squares[i].getAttribute('src') === '/RealisticRock.jpeg') {
             validPaperMoves[i] = true
-          } else if (squares[i].getAttribute('src') === 'RealisticPaper.svg') {
+          } else if (squares[i].getAttribute('src') === '/RealisticPaper.svg') {
             validScissorsMoves[i] = true
-          } else if (squares[i].getAttribute('src') === 'RealisticScissors.svg') {
+          } else if (squares[i].getAttribute('src') === '/RealisticScissors.svg') {
             validRockMoves[i] = true
           }
         }
@@ -154,7 +183,7 @@ function updateSquare(square) {
 
 function checkForSquareWin() {
   for (let i = 0; i < 7; i += 3) {
-    if ((squares[i].getAttribute('src') === squares[i+1].getAttribute('src')) && (squares[i+1].getAttribute('src') === squares[i+2].getAttribute('src')) && (squares[i].getAttribute('src') !== 'Blank.svg')) {
+    if ((squares[i].getAttribute('src') === squares[i+1].getAttribute('src')) && (squares[i+1].getAttribute('src') === squares[i+2].getAttribute('src')) && (squares[i].getAttribute('src') !== '/Blank.svg')) {
         if (i === 0) {
           document.getElementById('horizontal1').style.visibility = 'visible';
         } else if (i === 3) {
@@ -174,7 +203,7 @@ function checkForSquareWin() {
   }
 
   for (let i = 0; i < 3; i ++) {
-      if ((squares[i].getAttribute('src') === squares[i+3].getAttribute('src')) && (squares[i+3].getAttribute('src') === squares[i+6].getAttribute('src')) && (squares[i].getAttribute('src') !== 'Blank.svg')) {
+      if ((squares[i].getAttribute('src') === squares[i+3].getAttribute('src')) && (squares[i+3].getAttribute('src') === squares[i+6].getAttribute('src')) && (squares[i].getAttribute('src') !== '/Blank.svg')) {
         if (i === 0) {
           document.getElementById('vertical1').style.visibility = 'visible';
         } else if (i === 1) {
@@ -193,7 +222,7 @@ function checkForSquareWin() {
       }
   }
 
-  if ((squares[0].getAttribute('src') === squares[4].getAttribute('src')) && (squares[4].getAttribute('src') === squares[8].getAttribute('src')) && (squares[0].getAttribute('src') !== 'Blank.svg')) {
+  if ((squares[0].getAttribute('src') === squares[4].getAttribute('src')) && (squares[4].getAttribute('src') === squares[8].getAttribute('src')) && (squares[0].getAttribute('src') !== '/Blank.svg')) {
       document.getElementById('diagonal1').style.visibility = 'visible';
       if (turnNumber%3 === 2) {
         turnHeader.textContent = 'Rock Wins!'
@@ -205,7 +234,7 @@ function checkForSquareWin() {
       return true;
   }
 
-  if ((squares[2].getAttribute('src') === squares[4].getAttribute('src')) && (squares[4].getAttribute('src') === squares[6].getAttribute('src')) && (squares[2].getAttribute('src') !== 'Blank.svg')) {
+  if ((squares[2].getAttribute('src') === squares[4].getAttribute('src')) && (squares[4].getAttribute('src') === squares[6].getAttribute('src')) && (squares[2].getAttribute('src') !== '/Blank.svg')) {
     document.getElementById('diagonal2').style.visibility = 'visible';
     if (turnNumber%3 === 2) {
       turnHeader.textContent = 'Rock Wins!'
@@ -215,7 +244,7 @@ function checkForSquareWin() {
       turnHeader.textContent = 'Scissors Wins!'
     } 
     return true;
-}
+  }
 
   for (let i = 0; i < 9; i++) {
       if (validRockMoves[i] || validPaperMoves[i] || validScissorsMoves[i]) {
@@ -227,7 +256,6 @@ function checkForSquareWin() {
 }
 
 function checkIfMoveIsValid(square) {
-
   let valid = true;
   if (turnNumber%3 === 1) {
     if (!validRockMoves[square]) {
@@ -248,12 +276,13 @@ function checkIfMoveIsValid(square) {
   } else {
     document.getElementById('valid').textContent = "Not a Valid Move"
   }
+  
 }
 
 
 for (let i = 0; i < 9; i++) {
   squares[i].onclick = () => {
-    if (!checkForSquareWin() && !wait) {
+    if (!checkForSquareWin() && !wait && turnNumber) {
       checkIfMoveIsValid(i);
     }
   }
@@ -261,7 +290,7 @@ for (let i = 0; i < 9; i++) {
 
 function reset() {
   for (let i = 0; i < squares.length; i++) {
-    squares[i].setAttribute('src', 'Blank.svg')
+    squares[i].setAttribute('src', '/Blank.svg')
     squares[i].setAttribute('alt', "")
     moveNumbers[i].textContent = 0
     squares[i].style.borderColor = 'black';
@@ -282,6 +311,11 @@ function reset() {
   document.getElementById('vertical3').style.visibility = 'hidden';
   document.getElementById('diagonal1').style.visibility = 'hidden';
   document.getElementById('diagonal2').style.visibility = 'hidden';
+  turnNumber = true;
+  if (isRockComp) {
+    turnNumber = false;
+    computerMove();
+  }
 }
 document.getElementById('again').onclick = () => {
   reset()
@@ -289,25 +323,57 @@ document.getElementById('again').onclick = () => {
 document.getElementById('pictureSwap').onclick = () => {
   if (pictureType === 'Normal') {
     for (let i = 0; i < 9; i++) {
-      if (squares[i].getAttribute('src') === 'Rock.jpeg') {
-        squares[i].setAttribute('src', 'RealisticRock.jpeg')
-      } else if (squares[i].getAttribute('src') === 'Paper.svg') {
-        squares[i].setAttribute('src', 'RealisticPaper.jpeg')
-      } else if (squares[i].getAttribute('src') === 'Scissors.svg') {
-        squares[i].setAttribute('src', 'RealisticScissors.jpeg')
+      if (squares[i].getAttribute('src') === '/Rock.jpeg') {
+        squares[i].setAttribute('src', '/RealisticRock.jpeg')
+      } else if (squares[i].getAttribute('src') === '/Paper.svg') {
+        squares[i].setAttribute('src', '/RealisticPaper.jpeg')
+      } else if (squares[i].getAttribute('src') === '/Scissors.svg') {
+        squares[i].setAttribute('src', '/RealisticScissors.jpeg')
       }
     }
     pictureType = 'Realistic'
   } else {
     for (let i = 0; i < 9; i++) {
-      if (squares[i].getAttribute('src') === 'RealisticRock.jpeg') {
-        squares[i].setAttribute('src', 'Rock.jpeg')
-      } else if (squares[i].getAttribute('src') === 'RealisticPaper.jpeg') {
-        squares[i].setAttribute('src', 'Paper.svg')
-      } else if (squares[i].getAttribute('src') === 'RealisticScissors.jpeg') {
-        squares[i].setAttribute('src', 'Scissors.svg')
+      if (squares[i].getAttribute('src') === '/RealisticRock.jpeg') {
+        squares[i].setAttribute('src', '/Rock.jpeg')
+      } else if (squares[i].getAttribute('src') === '/RealisticPaper.jpeg') {
+        squares[i].setAttribute('src', '/Paper.svg')
+      } else if (squares[i].getAttribute('src') === '/RealisticScissors.jpeg') {
+        squares[i].setAttribute('src', '/Scissors.svg')
       }
     }
     pictureType = 'Normal'
+  }
+  
+}
+
+document.getElementById('rockComp').onclick = () => {
+  if (!(isPaperComp && isScissorsComp)){
+    isRockComp = !isRockComp;
+    if (isRockComp) {
+      document.getElementById('rockCompIndicator').style.backgroundColor = 'aqua'
+    } else {
+      document.getElementById('rockCompIndicator').style.backgroundColor = 'white'
+    }
+  }
+}
+document.getElementById('paperComp').onclick = () => {
+  if (!(isRockComp && isScissorsComp)) {
+    isPaperComp = !isPaperComp;
+    if (isPaperComp) {
+      document.getElementById('paperCompIndicator').style.backgroundColor = 'aqua'
+    } else {
+      document.getElementById('paperCompIndicator').style.backgroundColor = 'white'
+    }
+  }
+}
+document.getElementById('scissorsComp').onclick = () => {
+  if (!(isRockComp && isPaperComp)) {
+    isScissorsComp = !isScissorsComp;
+    if (isScissorsComp) {
+      document.getElementById('scissorsCompIndicator').style.backgroundColor = 'aqua'
+    } else {
+      document.getElementById('scissorsCompIndicator').style.backgroundColor = 'white'
+    }
   }
 }
