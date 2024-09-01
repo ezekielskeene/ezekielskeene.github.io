@@ -20,27 +20,27 @@ function turnIncrement() {
   if (turnNumber%3 === 1) {
     turnHeader.textContent = "Rock's Turn";
     if (isRockComp) {
-      turnNumber = false;
+      currentTurn = false;
     } else {
-      turnNumber = true;
+      currentTurn = true;
     }
   } else if (turnNumber%3 === 2) {
     turnHeader.textContent = "Paper's Turn"
     if (isPaperComp) {
-      turnNumber = false;
+      currentTurn = false;
     } else {
-      turnNumber = true;
+      currentTurn = true;
     }
   } else {
     turnHeader.textContent = "Scissors' Turn";
     if (isScissorsComp) {
-      turnNumber = false;
+      currentTurn = false;
     } else {
-      turnNumber = true;
+      currentTurn = true;
     }
   }
   if (checkForValidMove()) {
-    if (!turnNumber) {
+    if (!currentTurn) {
       computerMove();
     }
   }
@@ -95,7 +95,7 @@ function checkForValidMove() {
 }
 
 function computerMove() {
-  while (!turnNumber) {
+  while (!currentTurn) {
     checkIfMoveIsValid(Math.round(Math.random()*9))
   }
 }
@@ -167,7 +167,7 @@ function updateSquare(square) {
           } else if (squares[i].getAttribute('src') === '/RealisticPaper.svg') {
             validScissorsMoves[i] = true
           } else if (squares[i].getAttribute('src') === '/RealisticScissors.svg') {
-            validRockMoves[i] = true
+            validRockMoves[i] = true  
           }
         }
       }
@@ -282,7 +282,7 @@ function checkIfMoveIsValid(square) {
 
 for (let i = 0; i < 9; i++) {
   squares[i].onclick = () => {
-    if (!checkForSquareWin() && !wait && turnNumber) {
+    if (!checkForSquareWin() && !wait && currentTurn) {
       checkIfMoveIsValid(i);
     }
   }
@@ -311,9 +311,9 @@ function reset() {
   document.getElementById('vertical3').style.visibility = 'hidden';
   document.getElementById('diagonal1').style.visibility = 'hidden';
   document.getElementById('diagonal2').style.visibility = 'hidden';
-  turnNumber = true;
+  currentTurn = true;
   if (isRockComp) {
-    turnNumber = false;
+    currentTurn = false;
     computerMove();
   }
 }
