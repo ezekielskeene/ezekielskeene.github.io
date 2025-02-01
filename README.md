@@ -13,3 +13,5 @@ most yay.
 
 Also now connect four and a thing for Rock Tac that displays games well and generates random games with random moves.
 very yay.
+
+Also now a thing to generate all possible rock tac games and same for tic tac toe. assuming i did it right. Interesting word plus yay.
