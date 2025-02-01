@@ -1,9 +1,9 @@
 const squares = [document.getElementById('square1'), document.getElementById('square2'), document.getElementById('square3'), document.getElementById('square4'), document.getElementById('square5'), document.getElementById('square6'), document.getElementById('square7'), document.getElementById('square8'), document.getElementById('square9')]
 const moveNumbers = [document.getElementById('moveNumber1'), document.getElementById('moveNumber2'), document.getElementById('moveNumber3'), document.getElementById('moveNumber4'), document.getElementById('moveNumber5'), document.getElementById('moveNumber6'), document.getElementById('moveNumber7'), document.getElementById('moveNumber8'), document.getElementById('moveNumber9')]
 let moveNumbersValue = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-let gameSeeds = ['02777333648510055']
+let gameSeeds = ['01220032113887765544356']
 let currentBoard = 0
-//gameState = [0, 2, 7, 7, 7, 3, 3, 3, 6, 4, 8, 5, 1, 0, 0, 5, 5]
+//gameState = [0, 1, 2, 2, 0, 0, 3, 2, 1, 1, 3, 8, 8, 7, 7, 6, 5, 5, 4, 4, 3, 5, 6]
 let turnNumberTemporary = 1;
 const turnHeader = document.getElementById('turn')
 let validRockMoves = [true, true, true, true, true, true, true, true, true]
