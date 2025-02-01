@@ -11,6 +11,7 @@ let currentTurn = true;
 let isRockComp = false;
 let isPaperComp = false;
 let isScissorsComp = false;
+let moveList = [];
 //validRockMoves = [false, true, false, false, false, false, false, false, false]
 // validPaperMoves = [false, false, false, false, false, true, false, false, false]
 // validScissorsMoves = [false, false, true, false, true, false, false, false, false]
@@ -102,6 +103,8 @@ function computerMove() {
 
 function updateSquare(square) {
   moveNumbers[square].textContent++
+  moveList.push(square);
+  document.getElementById('moveList').textContent = 'Move list: ' + moveList;
   if (turnNumber%3 === 1) {
     if (pictureType === 'Normal') {
       squares[square].setAttribute('src', '/Rock.jpeg')
@@ -311,6 +314,8 @@ function reset() {
   document.getElementById('vertical3').style.visibility = 'hidden';
   document.getElementById('diagonal1').style.visibility = 'hidden';
   document.getElementById('diagonal2').style.visibility = 'hidden';
+  document.getElementById('moveList').textContent = 'Move list: '
+  moveList = [];
   currentTurn = true;
   if (isRockComp) {
     currentTurn = false;
