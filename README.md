@@ -10,3 +10,6 @@ indeed yay.
 
 Also now theres a battleship thing that tells you the theoretical best moves to make and a connect four game.
 most yay.
+
+Also now connect four and a thing for Rock Tac that displays games well and generates random games with random moves.
+very yay.
